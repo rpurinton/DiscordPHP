@@ -391,7 +391,7 @@ class Message extends Part
         }
 
         $oldReactions = [];
-        if (! empty($this->attributes['reactions'])) {
+        if (!empty($this->attributes['reactions'])) {
             foreach ($this->attributes['reactions'] as $oldReaction) {
                 $oldReactions[] = $oldReaction->emoji->id ?? $oldReaction->emoji->name;
             }
@@ -444,7 +444,7 @@ class Message extends Part
      */
     protected function getThreadAttribute(): ?Thread
     {
-        if (! isset($this->attributes['thread'])) {
+        if (!isset($this->attributes['thread'])) {
             return null;
         }
 
@@ -541,7 +541,7 @@ class Message extends Part
      */
     protected function getAuthorAttribute(): ?User
     {
-        if (! isset($this->attributes['author'])) {
+        if (!isset($this->attributes['author'])) {
             return null;
         }
 
@@ -598,7 +598,7 @@ class Message extends Part
      */
     protected function getInteractionAttribute(): ?MessageInteraction
     {
-        if (! isset($this->attributes['interaction'])) {
+        if (!isset($this->attributes['interaction'])) {
             return null;
         }
 
@@ -624,7 +624,7 @@ class Message extends Part
                 }
 
                 // @todo potentially slow
-                if (! $channel && ! isset($this->attributes['referenced_message'])) {
+                if (!$channel && !isset($this->attributes['referenced_message'])) {
                     $channel = $this->discord->getChannel($reference->channel_id);
                 }
 
@@ -652,7 +652,7 @@ class Message extends Part
      */
     protected function getTimestampAttribute(): ?Carbon
     {
-        if (! isset($this->attributes['timestamp'])) {
+        if (!isset($this->attributes['timestamp'])) {
             return null;
         }
 
@@ -668,7 +668,7 @@ class Message extends Part
      */
     protected function getEditedTimestampAttribute(): ?Carbon
     {
-        if (! isset($this->attributes['edited_timestamp'])) {
+        if (!isset($this->attributes['edited_timestamp'])) {
             return null;
         }
 
@@ -682,7 +682,7 @@ class Message extends Part
      */
     protected function getComponentsAttribute(): ?Collection
     {
-        if (! isset($this->attributes['components'])) {
+        if (!isset($this->attributes['components'])) {
             return null;
         }
 
@@ -702,7 +702,7 @@ class Message extends Part
      */
     protected function getStickerItemsAttribute(): ?Collection
     {
-        if (! isset($this->attributes['sticker_items']) && ! in_array($this->type, [self::TYPE_DEFAULT, self::TYPE_REPLY])) {
+        if (!isset($this->attributes['sticker_items']) && !in_array($this->type, [self::TYPE_DEFAULT, self::TYPE_REPLY])) {
             return null;
         }
 
@@ -723,7 +723,7 @@ class Message extends Part
     public function getLinkAttribute(): ?string
     {
         if ($this->id && $this->channel_id) {
-            return 'https://discord.com/channels/'.($this->guild_id ?? '@me').'/'.$this->channel_id.'/'.$this->id;
+            return 'https://discord.com/channels/' . ($this->guild_id ?? '@me') . '/' . $this->channel_id . '/' . $this->id;
         }
 
         return null;
@@ -754,7 +754,7 @@ class Message extends Part
             $options = [
                 'name' => $options,
             ];
-            if (! is_string($reason)) {
+            if (!is_string($reason)) {
                 $options['auto_archive_duration'] = $reason ?? 1440;
             }
             $reason = $_reason;
@@ -778,16 +778,16 @@ class Message extends Part
 
         $channel = $this->channel;
         if ($channel) {
-            if (! in_array($channel->type, [Channel::TYPE_GUILD_TEXT, Channel::TYPE_GUILD_ANNOUNCEMENT, null])) {
+            if (!in_array($channel->type, [Channel::TYPE_GUILD_TEXT, Channel::TYPE_GUILD_ANNOUNCEMENT, null])) {
                 return reject(new \RuntimeException('You can only start threads on guild text channels or news channels.'));
             }
 
             $botperms = $channel->getBotPermissions();
-            if ($botperms && ! $botperms->create_public_threads) {
+            if ($botperms && !$botperms->create_public_threads) {
                 return reject(new NoPermissionsException("You do not have permission to create public threads in channel {$this->id}."));
             }
 
-            if (! empty($options['rate_limit_per_user']) && ! $botperms->manage_threads) {
+            if (!empty($options['rate_limit_per_user']) && !$botperms->manage_threads) {
                 return reject(new NoPermissionsException("You do not have permission to manage threads in channel {$this->id}."));
             }
         }
@@ -860,11 +860,11 @@ class Message extends Part
         if ($channel = $this->channel) {
             if ($botperms = $channel->getBotPermissions()) {
                 if ($this->user_id == $this->discord->id) {
-                    if (! $botperms->send_messages) {
+                    if (!$botperms->send_messages) {
                         return reject(new NoPermissionsException("You do not have permission to crosspost message in channel {$this->id}."));
                     }
                 } else {
-                    if (! $botperms->manage_messages) {
+                    if (!$botperms->manage_messages) {
                         return reject(new NoPermissionsException("You do not have permission to crosspost others message in channel {$this->id}."));
                     }
                 }
@@ -940,7 +940,7 @@ class Message extends Part
 
         if ($channel = $this->channel) {
             $botperms = $channel->getBotPermissions();
-            if ($botperms && ! $botperms->read_message_history) {
+            if ($botperms && !$botperms->read_message_history) {
                 return reject(new NoPermissionsException("You do not have permission to read message history in channel {$channel->id}."));
             }
         }
@@ -968,7 +968,7 @@ class Message extends Part
         if ($emoticon instanceof Emoji) {
             $emoticon = $emoticon->toReactionString();
         } else {
-            $emoticon = urlencode($emoticon);
+            $emoticon = urlencode($emoticon ?? '');
         }
 
         switch ($type) {
@@ -990,7 +990,7 @@ class Message extends Part
 
         if (($type != self::REACT_DELETE_ME || $id != $this->discord->id) && $channel = $this->channel) {
             $botperms = $channel->getBotPermissions();
-            if ($botperms && ! $botperms->manage_messages) {
+            if ($botperms && !$botperms->manage_messages) {
                 return reject(new NoPermissionsException("You do not have permission to delete reaction by others in channel {$channel->id}."));
             }
         }
@@ -1039,13 +1039,13 @@ class Message extends Part
      */
     public function delete(): ExtendedPromiseInterface
     {
-        if (! $this->isDeletable()) {
+        if (!$this->isDeletable()) {
             return reject(new \RuntimeException("Cannot delete this type of message: {$this->type}", 50021));
         }
 
         if ($this->user_id != $this->discord->id && $channel = $this->channel) {
             $botperms = $channel->getBotPermissions();
-            if ($botperms && ! $botperms->manage_messages) {
+            if ($botperms && !$botperms->manage_messages) {
                 return reject(new NoPermissionsException("You do not have permission to delete message by others in channel {$channel->id}."));
             }
         }
@@ -1126,7 +1126,7 @@ class Message extends Part
      */
     public function isDeletable(): bool
     {
-        return ! in_array($this->type, [
+        return !in_array($this->type, [
             self::TYPE_RECIPIENT_ADD,
             self::TYPE_RECIPIENT_REMOVE,
             self::TYPE_CALL,
