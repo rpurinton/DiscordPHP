@@ -188,7 +188,7 @@ class Guild extends Part
     public const HUB_TYPE_COLLEGE = 2;
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected $fillable = [
         'id',
@@ -243,7 +243,7 @@ class Guild extends Part
     ];
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected $visible = [
         'feature_animated_banner',
@@ -280,7 +280,7 @@ class Guild extends Part
     ];
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected $repositories = [
         'roles' => RoleRepository::class,
@@ -307,7 +307,7 @@ class Guild extends Part
     protected $regions;
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected function setChannelsAttribute(?array $channels): void
     {
@@ -1587,7 +1587,7 @@ class Guild extends Part
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      *
      * @link https://discord.com/developers/docs/resources/guild#create-guild-json-params
      */
@@ -1614,7 +1614,7 @@ class Guild extends Part
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      *
      * @link https://discord.com/developers/docs/resources/guild#modify-guild-json-params
      */
@@ -1643,7 +1643,7 @@ class Guild extends Part
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getRepositoryAttributes(): array
     {

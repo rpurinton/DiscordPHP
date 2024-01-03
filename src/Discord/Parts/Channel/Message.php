@@ -180,7 +180,7 @@ class Message extends Part
     public const FLAG_SUPPRESS_NOTIFICATIONS = (1 << 12);
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected $fillable = [
         'id',
@@ -222,7 +222,7 @@ class Message extends Part
     ];
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected $repositories = [
         'reactions' => ReactionRepository::class,
@@ -1142,7 +1142,7 @@ class Message extends Part
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      *
      * @link https://discord.com/developers/docs/resources/channel#edit-message-jsonform-params
      */
@@ -1155,7 +1155,7 @@ class Message extends Part
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getRepositoryAttributes(): array
     {

@@ -49,7 +49,6 @@ use Discord\Http\Endpoint;
 use Evenement\EventEmitterTrait;
 use Monolog\Formatter\LineFormatter;
 use Psr\Log\LoggerInterface;
-use React\Cache\ArrayCache;
 use React\Promise\ExtendedPromiseInterface;
 use React\Promise\PromiseInterface;
 use React\Socket\Connector as SocketConnector;

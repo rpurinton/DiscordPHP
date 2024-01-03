@@ -62,7 +62,7 @@ use function React\Promise\reject;
 class Interaction extends Part
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected $fillable = [
         'id',

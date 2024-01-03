@@ -41,7 +41,7 @@ use Discord\Parts\Permissions\RolePermission;
 class Role extends Part
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected $fillable = [
         'id',
@@ -128,7 +128,7 @@ class Role extends Part
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      *
      * @link https://discord.com/developers/docs/resources/guild#create-guild-role-json-params
      */
@@ -146,7 +146,7 @@ class Role extends Part
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      *
      * @link https://discord.com/developers/docs/resources/guild#modify-guild-role-json-params
      */
@@ -164,7 +164,7 @@ class Role extends Part
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getRepositoryAttributes(): array
     {

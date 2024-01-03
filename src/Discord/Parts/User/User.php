@@ -77,7 +77,7 @@ class User extends Part
     public const PREMIUM_NITRO_BASIC = 3;
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected $fillable = [
         'id',
@@ -299,7 +299,7 @@ class User extends Part
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getRepositoryAttributes(): array
     {

@@ -35,7 +35,7 @@ final class FunctionsTest extends TestCase
         $this->assertEquals($expected, contains($needle, $haystack));
     }
 
-    public function containsProvider(): array
+    public static function containsProvider(): array
     {
         return [
             [true, 'hello, world!', ['hello']],
@@ -52,7 +52,7 @@ final class FunctionsTest extends TestCase
         $this->assertEquals($expected, getColor($color));
     }
 
-    public function colorProvider(): array
+    public static function colorProvider(): array
     {
         return [
             [0xcd5c5c, 'indianred'],
@@ -71,7 +71,7 @@ final class FunctionsTest extends TestCase
         $this->assertEquals($expected, poly_strlen($string));
     }
 
-    public function strlenProvider(): array
+    public static function strlenProvider(): array
     {
         return [
             [5, 'abcde'],
@@ -96,7 +96,7 @@ final class FunctionsTest extends TestCase
         $this->assertEquals($outcome, mentioned($part, $message));
     }
 
-    public function mentionedProvider(): array
+    public static function mentionedProvider(): array
     {
         $mockDiscord = getMockDiscord();
 
@@ -157,7 +157,7 @@ final class FunctionsTest extends TestCase
         $this->assertEquals($expected, studly($input));
     }
 
-    public function studlyCaseProvider(): array
+    public static function studlyCaseProvider(): array
     {
         return [
             ['trains are cool', 'TrainsAreCool'],
@@ -181,7 +181,7 @@ final class FunctionsTest extends TestCase
         );
     }
 
-    public function normalizePartIdProvider(): array
+    public static function normalizePartIdProvider(): array
     {
         $mockDiscord = getMockDiscord();
 
@@ -203,7 +203,7 @@ final class FunctionsTest extends TestCase
         $this->assertEquals($expected, escapeMarkdown($input));
     }
 
-    public function escapeMarkdownProvider(): array
+    public static function escapeMarkdownProvider(): array
     {
         return [
             [

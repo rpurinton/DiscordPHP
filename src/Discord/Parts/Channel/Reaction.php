@@ -48,7 +48,7 @@ use function React\Promise\resolve;
 class Reaction extends Part
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected $fillable = [
         'id', // internal
@@ -63,7 +63,7 @@ class Reaction extends Part
     ];
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function isPartial(): bool
     {
@@ -71,7 +71,7 @@ class Reaction extends Part
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function fetch(): ExtendedPromiseInterface
     {
@@ -284,7 +284,7 @@ class Reaction extends Part
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getRepositoryAttributes(): array
     {

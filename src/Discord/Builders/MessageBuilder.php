@@ -620,7 +620,7 @@ class MessageBuilder implements JsonSerializable
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function jsonSerialize(): array
     {

@@ -150,7 +150,7 @@ class Channel extends Part
     public const FORUM_LAYOUT_GRID_VIEW = 2;
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected $fillable = [
         'id',
@@ -190,7 +190,7 @@ class Channel extends Part
     ];
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected $repositories = [
         'overwrites' => OverwriteRepository::class,
@@ -203,7 +203,7 @@ class Channel extends Part
     ];
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected function afterConstruct(): void
     {
@@ -1400,7 +1400,7 @@ class Channel extends Part
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      *
      * @link https://discord.com/developers/docs/resources/guild#create-guild-channel-json-params
      */
@@ -1489,7 +1489,7 @@ class Channel extends Part
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      *
      * @link https://discord.com/developers/docs/resources/channel#modify-channel-json-params-guild-channel
      */
@@ -1571,7 +1571,7 @@ class Channel extends Part
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getRepositoryAttributes(): array
     {

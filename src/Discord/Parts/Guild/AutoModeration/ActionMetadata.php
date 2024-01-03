@@ -28,7 +28,7 @@ use Discord\Parts\Part;
 class ActionMetadata extends Part
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected $fillable = [
         'channel_id',
@@ -37,7 +37,7 @@ class ActionMetadata extends Part
     ];
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getPublicAttributes(): array
     {
